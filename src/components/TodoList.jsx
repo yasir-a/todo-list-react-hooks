@@ -3,13 +3,13 @@ import Todo from "./Todo";
 
 const TodoList = ({
   todos,
+  editTodo,
+  editTodoId,
   removeTodo,
   completeTodo,
   toggleEditMode,
-  editTodoId,
   onChange,
-  editTodo,
-  updateTodo,
+  onSubmit,
 }) => {
   const renderTodos = () => {
     return todos.map((todo) => {
@@ -17,13 +17,13 @@ const TodoList = ({
         <Todo
           key={todo.id}
           todo={todo}
+          editTodo={editTodo}
+          editTodoId={editTodoId}
           removeTodo={removeTodo}
           completeTodo={completeTodo}
           toggleEditMode={toggleEditMode}
-          editTodoId={editTodoId}
           onChange={onChange}
-          editTodo={editTodo}
-          updateTodo={updateTodo}
+          onSubmit={onSubmit}
         />
       );
     });

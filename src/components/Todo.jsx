@@ -3,13 +3,13 @@ import TodoForm from "./todoForm";
 
 const Todo = ({
   todo,
+  editTodo,
+  editTodoId,
   removeTodo,
   completeTodo,
   toggleEditMode,
-  editTodoId,
   onChange,
-  editTodo,
-  updateTodo,
+  onSubmit,
 }) => {
   return (
     <div>
@@ -19,17 +19,16 @@ const Todo = ({
         onChange={() => completeTodo(todo.id)}
       />
       {editTodoId === todo.id ? (
-        <form id='todo-edit-form' onSubmit={updateTodo}>
-          <input
-            id='todo-edit-input'
+        <div>
+          <TodoForm
+            id='todo-edit'
             type='text'
+            btnText='Update'
             value={editTodo}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
+            onSubmit={onSubmit}
           />
-          <button id='todo-edit-btn' type='submit'>
-            Update
-          </button>
-        </form>
+        </div>
       ) : (
         <div>
           <p>{todo.todoText}</p>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -9,69 +9,39 @@ const App = () => {
   const [editTodo, setEditTodo] = useState("");
   const [editTodoId, setEditTodoId] = useState(null);
 
-  // const handleOnChange = (e) => {
-  //   console.log(`change id ${e.target.id}`);
-  //   console.log(`change value ${e.target.value}`);
-  //   if (e.target.id === "todo-add-input") {
-  //     setTodo(e.target.value);
-  //   } else {
-  //     setEditText(e.target.value);
-  //   }
-  // };
-
-  const formAddChange = (e) => {
-    setTodo(e.target.value);
+  const handleInputChange = (e) => {
+    console.log(`change id ${e.target.id}`);
+    console.log(`change value ${e.target.value}`);
+    if (e.target.id === "todo-add-input") {
+      setTodo(e.target.value);
+    } else {
+      setEditTodo(e.target.value);
+    }
   };
-  const formEditChange = (e) => {
-    setEditTodo(e.target.value);
-  };
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(`submit id ${e.target.id}`);
-  //   const newTodo = {
-  //     id: uuidv4(),
-  //     todoText: todo,
-  //     isCompleted: false,
-  //   };
-  //   setTodos([...todos, newTodo]);
-  //   setTodo("");
-  // };
 
-  const addTodo = (e) => {
+  const handleInputSubmit = (e) => {
     e.preventDefault();
     console.log(`submit id ${e.target.id}`);
-    const newTodo = {
-      id: uuidv4(),
-      todoText: todo,
-      isCompleted: false,
-    };
-    setTodos([...todos, newTodo]);
-    setTodo("");
+    if (e.target.id === "todo-add-form") {
+      const newTodo = {
+        id: uuidv4(),
+        todoText: todo,
+        isCompleted: false,
+      };
+      setTodos([...todos, newTodo]);
+      setTodo("");
+    } else {
+      const updatedTodos = [...todos].map((todo) => {
+        if (todo.id === editTodoId) {
+          return { ...todo, todoText: editTodo };
+        }
+        return todo;
+      });
+      setTodos(updatedTodos);
+      setEditTodoId(null);
+      setEditTodo("");
+    }
   };
-
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(`submit id ${e.target.id}`);
-  //   if (e.target.id === "todo-add-form") {
-  //     const newTodo = {
-  //       id: uuidv4(),
-  //       todoText: todo,
-  //       isCompleted: false,
-  //     };
-  //     setTodos([...todos, newTodo]);
-  //     setTodo("");
-  //   } else {
-  //     const updatedTodos = [...todos].map((todo) => {
-  //       if (todo.id === editTodoId) {
-  //         return { ...todo, todoText: editText };
-  //       }
-  //       return todo;
-  //     });
-  //     setTodos(updatedTodos);
-  //     setEditTodoId(null);
-  //     setEditText("");
-  //   }
-  // };
 
   const removeTodo = (id) => {
     const updatedTodos = [...todos].filter((todo) => {
@@ -98,31 +68,6 @@ const App = () => {
     setEditTodo(todo.todoText);
   };
 
-  // const updateTodo = () => {
-  //   const updatedTodos = [...todos].map((todo) => {
-  //     if (todo.id === editTodoId) {
-  //       return { ...todo, todoText: editText };
-  //     }
-  //     return todo;
-  //   });
-  //   setTodos(updatedTodos);
-  //   setEditTodoId(null);
-  //   setEditText("");
-  // };
-
-  const updateTodo = (e) => {
-    e.preventDefault();
-    const updatedTodos = [...todos].map((todo) => {
-      if (todo.id === editTodoId) {
-        return { ...todo, todoText: editTodo };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-    setEditTodoId(null);
-    setEditTodo("");
-  };
-
   return (
     <div>
       <TodoForm
@@ -130,20 +75,18 @@ const App = () => {
         type='text'
         btnText='Add'
         value={todo}
-        onChange={formAddChange}
-        //onSubmit={handleOnSubmit}
-        onSubmit={addTodo}
+        onChange={handleInputChange}
+        onSubmit={handleInputSubmit}
       />
       <TodoList
         todos={todos}
+        editTodo={editTodo}
+        editTodoId={editTodoId}
         removeTodo={removeTodo}
         completeTodo={completeTodo}
         toggleEditMode={toggleEditMode}
-        editTodoId={editTodoId}
-        onChange={formEditChange}
-        editTodo={editTodo}
-        //updateTodo={updateTodo}
-        updateTodo={updateTodo}
+        onChange={handleInputChange}
+        onSubmit={handleInputSubmit}
       />
     </div>
   );
