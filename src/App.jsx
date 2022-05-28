@@ -9,33 +9,12 @@ const App = () => {
   const [editTodo, setEditTodo] = useState("");
   const [editTodoId, setEditTodoId] = useState(null);
 
-  // const handleOnChange = (e) => {
-  //   console.log(`change id ${e.target.id}`);
-  //   console.log(`change value ${e.target.value}`);
-  //   if (e.target.id === "todo-add-input") {
-  //     setTodo(e.target.value);
-  //   } else {
-  //     setEditText(e.target.value);
-  //   }
-  // };
-
   const formAddChange = (e) => {
     setTodo(e.target.value);
   };
   const formEditChange = (e) => {
     setEditTodo(e.target.value);
   };
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(`submit id ${e.target.id}`);
-  //   const newTodo = {
-  //     id: uuidv4(),
-  //     todoText: todo,
-  //     isCompleted: false,
-  //   };
-  //   setTodos([...todos, newTodo]);
-  //   setTodo("");
-  // };
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -48,30 +27,6 @@ const App = () => {
     setTodos([...todos, newTodo]);
     setTodo("");
   };
-
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(`submit id ${e.target.id}`);
-  //   if (e.target.id === "todo-add-form") {
-  //     const newTodo = {
-  //       id: uuidv4(),
-  //       todoText: todo,
-  //       isCompleted: false,
-  //     };
-  //     setTodos([...todos, newTodo]);
-  //     setTodo("");
-  //   } else {
-  //     const updatedTodos = [...todos].map((todo) => {
-  //       if (todo.id === editTodoId) {
-  //         return { ...todo, todoText: editText };
-  //       }
-  //       return todo;
-  //     });
-  //     setTodos(updatedTodos);
-  //     setEditTodoId(null);
-  //     setEditText("");
-  //   }
-  // };
 
   const removeTodo = (id) => {
     const updatedTodos = [...todos].filter((todo) => {
@@ -98,18 +53,6 @@ const App = () => {
     setEditTodo(todo.todoText);
   };
 
-  // const updateTodo = () => {
-  //   const updatedTodos = [...todos].map((todo) => {
-  //     if (todo.id === editTodoId) {
-  //       return { ...todo, todoText: editText };
-  //     }
-  //     return todo;
-  //   });
-  //   setTodos(updatedTodos);
-  //   setEditTodoId(null);
-  //   setEditText("");
-  // };
-
   const updateTodo = (e) => {
     e.preventDefault();
     const updatedTodos = [...todos].map((todo) => {
@@ -131,7 +74,6 @@ const App = () => {
         btnText='Add'
         value={todo}
         onChange={formAddChange}
-        //onSubmit={handleOnSubmit}
         onSubmit={addTodo}
       />
       <TodoList
@@ -142,7 +84,6 @@ const App = () => {
         editTodoId={editTodoId}
         onChange={formEditChange}
         editTodo={editTodo}
-        //updateTodo={updateTodo}
         updateTodo={updateTodo}
       />
     </div>
