@@ -1,13 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+import TodoForm from "./components/todoForm/TodoForm";
+import TodoList from "./components/todoList/TodoList";
 
 const App = () => {
+  console.log("App component rendered");
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
   const [editTodo, setEditTodo] = useState("");
   const [editTodoId, setEditTodoId] = useState(null);
+
+  useEffect(() => {
+    console.log("useEffect-1 fired ");
+    const todosJSON = localStorage.getItem("todos");
+    const todosRetrieved = JSON.parse(todosJSON);
+    console.log(todosJSON);
+    if (todosRetrieved.length > 0) {
+      setTodos(todosRetrieved);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("useEffect-2 fired ");
+    const todosJSON = JSON.stringify(todos);
+    localStorage.setItem("todos", todosJSON);
+    console.log(todosJSON);
+  }, [todos]);
 
   const handleInputChange = (e) => {
     console.log(`change id ${e.target.id}`);

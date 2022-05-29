@@ -1,5 +1,3 @@
-import React from "react";
-
 const TodoForm = ({ id, type, btnText, value, onChange, onSubmit }) => {
   return (
     <form id={`${id}-form`} onSubmit={(e) => onSubmit(e)}>

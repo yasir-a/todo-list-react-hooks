@@ -1,5 +1,4 @@
-import React from "react";
-import TodoForm from "./todoForm";
+import TodoForm from "../todoForm/TodoForm";
 
 const Todo = ({
   todo,
