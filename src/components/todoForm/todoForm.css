@@ -1,0 +1,170 @@
+#todo-add-form {
+  margin-top: 40px;
+  margin-left: 6px;
+  padding: 0px 30px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+#todo-add-input {
+  font-size: 15px;
+  display: block;
+  width: 300px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #757575;
+  padding: 10px 0;
+}
+
+#todo-add-input:focus {
+  outline: none;
+}
+
+.todoForm-label {
+  color: #696969;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  pointer-events: none;
+  left: 30px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+#todo-add-input:focus ~ .todoForm-label,
+#todo-add-input:valid ~ .todoForm-label {
+  top: -8px;
+  font-size: 12px;
+  color: #5468ff;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  padding: 0 30px;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5468ff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+
+#todo-add-input:focus ~ .bar:before,
+#todo-add-input:focus ~ .bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 70px;
+  top: 25%;
+  left: 10%;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#todo-add-input:focus ~ .highlight {
+  animation: inputHighlight 0.3s ease;
+  -webkit-animation: inputHighlight 0.3s ease;
+  -moz-animation: inputHighlight 0.3s ease;
+}
+
+@-webkit-keyframes inputHighlight {
+  from {
+    background: #5468ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlight {
+  from {
+    background: #5468ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlight {
+  from {
+    background: #5468ff;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+.form-submit-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: 20px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.btn-icon-add {
+  height: 100%;
+  width: 100%;
+  color: #095bfe;
+}
+.btn-icon-save {
+  height: 20px;
+  width: 20px;
+  color: #095bfe;
+}
+
+/* todo-edit-input */
+#todo-edit-form {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 5px, 0;
+  height: 30px;
+  width: 100%;
+}
+#todo-edit-input {
+  font-size: 13px;
+  display: block;
+  width: 265px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #757575;
+  padding: 5px 0px;
+  word-break: break-word;
+}
+#todo-edit-input:focus {
+  outline: none;
+}
+#todo-edit-input:focus ~ .bar:before,
+#todo-edit-input:focus ~ .bar:after {
+  width: 50%;
+}
+#todo-edit-input:focus ~ .highlight {
+  animation: inputHighlight 0.3s ease;
+  -webkit-animation: inputHighlight 0.3s ease;
+  -moz-animation: inputHighlight 0.3s ease;
+}
+/* todo-edit-input */

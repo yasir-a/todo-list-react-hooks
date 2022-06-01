@@ -1,0 +1,8 @@
+.todoList-container {
+  margin: 30px 0px;
+
+  padding: 5px 5px;
+  width: 85%;
+  height: 300px;
+  overflow-y: scroll;
+}

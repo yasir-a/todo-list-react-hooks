@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoForm from "./components/todoForm/TodoForm";
 import TodoList from "./components/todoList/TodoList";
+import todoImg from "./assets/todoList.png";
+import "./App.css";
 
 const App = () => {
   console.log("App component rendered");
@@ -87,7 +89,11 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='app-container'>
+      <div className='app-img-container'>
+        <img src={todoImg} alt='todolist' className='app-img' />
+      </div>
+
       <TodoForm
         id='todo-add'
         type='text'

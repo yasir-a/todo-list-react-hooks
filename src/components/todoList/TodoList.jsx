@@ -1,4 +1,5 @@
 import Todo from "../todo/Todo";
+import "./todoList.css";
 
 const TodoList = ({
   todos,
@@ -31,7 +32,7 @@ const TodoList = ({
     return <p>There are no Todos</p>;
   };
 
-  return <div>{renderTodos()}</div>;
+  return <div className='todoList-container'>{renderTodos()}</div>;
 };
 
 export default TodoList;

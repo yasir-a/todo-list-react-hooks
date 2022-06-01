@@ -1,1 +1,23 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #a5b9db 0%, #ffffff 100%);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.app-img-container {
+  margin-top: 30px;
+  border: 2px solid #095bfe;
+  background-size: cover;
+  border-radius: 50% 50% 50% 50%;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.app-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+}
