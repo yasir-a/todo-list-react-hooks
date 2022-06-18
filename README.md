@@ -8,7 +8,7 @@
 
 ## Steps to get it on your machine
 
-1- clone the repo
-2- navigate to downloaded repo
-3- yarn
-4- yarn dev (to start the app)
+- clone the repo
+- navigate to downloaded repo
+- yarn
+- yarn dev (to start the app)
