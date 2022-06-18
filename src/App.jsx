@@ -17,7 +17,7 @@ const App = () => {
     const todosJSON = localStorage.getItem("todos");
     const todosRetrieved = JSON.parse(todosJSON);
     console.log(todosJSON);
-    if (todosRetrieved.length > 0) {
+    if (todosRetrieved && todosRetrieved.length > 0) {
       setTodos(todosRetrieved);
     }
   }, []);
