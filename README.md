@@ -6,6 +6,10 @@
 - Displaying Todo
 - Mark Todo as Complete
 
+## Preview
+
+![](https://github.com/todo-list-react-hooks/src/assets/todoGif24.gif)
+
 ## Demo
 
 https://yasir-a.github.io/todo-list-react-hooks/
