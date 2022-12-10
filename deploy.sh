@@ -25,5 +25,3 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:yasir-a/todo-list-react-hooks.git main:gh-pages
-
-cd -
